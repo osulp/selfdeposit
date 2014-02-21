@@ -13,7 +13,10 @@
     </head>
     <body>
         <div id="header">
-	<h1>Open Access Article Deposit and Waiver Form<p>
+        <a href="http://www.oregonstate.edu" id="link"></a>
+	<h1><a href="<?php echo base_url(); ?>">Open Access Article Deposit and Waiver Form</a>
+        <hr style="width:80%; text-align:left;margin-left:0">
+        <p>
 	<?php echo $page_title; ?><p></h1>
 	<a href="/easydeposit"><h1>Title</h1></a>
 	</div>

@@ -21,15 +21,20 @@ h1 {
 }
 #header {
     position: relative;
-    background: url('../images/topbanner.png') top left no-repeat;
+    background: url('../images/osu-tag.png') top left no-repeat;
+    padding-top: 20px;
+    margin: 10px;
+    height: 120px;
+    width: 1200px;
 }
 
-#header a {
+#link {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 1200px;
-    height: 140px;
+    top: 0; left: 0;
+    width: 120px;
+    height: 120px;
+    top: 0; left: 0;
+    float: left;
 }
 
 #header a h1 {
@@ -38,7 +43,7 @@ h1 {
 
 
 #header h1 {
-	padding-top: 102px;
+	padding-top: 30px;
     font-size: 24pt;
 	text-align:left;
 	margin-left:228px;

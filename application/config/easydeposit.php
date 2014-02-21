@@ -8,8 +8,8 @@
 // Admin username and password
 // (The password is stored encrypted. 6da12e83ef06d1d59884a5ca724cbc75 is 'easydepositadmin'
 // The password can be changed in the admin interface
-$config['easydeposit_adminusername'] = 'easydepositadmin';
-$config['easydeposit_adminpassword'] = '6da12e83ef06d1d59884a5ca724cbc75';
+$config['easydeposit_adminusername'] = "easydepositadmin";
+$config['easydeposit_adminpassword'] = "4b32ecb023e1acdda82e682894508222";
 
 // Location of the SWORD PHP library (this normally doesn't need to be changed)
 $config['easydeposit_librarylocation'] = 'application/libraries/swordapp-php-library';
@@ -42,7 +42,7 @@ $config['easydeposit_servicedocumentlogin_url'] = 'http://ir.library.oregonstate
 $config['easydeposit_selectrepository_list'] = array('http://localhost:8080/sword/servicedocument', 'http://demo.dspace.org/sword/servicedocument', 'http://sword.eprints.org/sword-app/servicedocument', 'http://sword.intralibrary.com/IntraLibrary-Deposit/');
 
 // Credentials with which to retrieve a service document automatically
-$config['easydeposit_retrieveservicedocument_url'] = "http://ir.library.oregonstate.edu:8080/sword/servicedocument";
+$config['easydeposit_retrieveservicedocument_url'] = "http://ir.library.oregonstate.edu/sword/servicedocument";
 $config['easydeposit_retrieveservicedocument_username'] = "openaccess@library.oregonstate.edu";
 $config['easydeposit_retrieveservicedocument_password'] = "v@lley3730";
 $config['easydeposit_retrieveservicedocument_obo'] = "";
