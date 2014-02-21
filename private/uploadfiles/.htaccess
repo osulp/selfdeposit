@@ -1,2 +1,0 @@
-# Allow no web access to this directory
-deny from all
