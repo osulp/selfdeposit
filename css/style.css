@@ -1,0 +1,281 @@
+body {
+    background-color: #fff;
+    font-family: 'Gudea',sans-serif;
+    font-size: 14px;
+    color: #4F5155;
+	margin:0 auto;
+	width: 1170px;
+}
+
+h1 {
+    color: #900;
+    background-color: transparent;
+    font-family: 'Gudea',sans-serif;
+    font-size: 36px;
+    font-weight:100;
+    letter-spacing: 0;
+    line-height: 0.5;
+    margin: 24px 0 2px 0;
+    padding: 5px 0 6px 0;
+	
+}
+#header {
+    position: relative;
+    background: url('../images/topbanner.png') top left no-repeat;
+}
+
+#header a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1200px;
+    height: 140px;
+}
+
+#header a h1 {
+    display: none;
+}
+
+
+#header h1 {
+	padding-top: 102px;
+    font-size: 24pt;
+	text-align:left;
+	margin-left:228px;
+	font-family: 'Gudea',sans-serif;
+}
+
+#header h1 p {
+    font-size: 16pt;
+	text-align: left;
+	margin-left: 3px;
+}
+
+#footer {
+    border-top: 2px solid #000;
+    text-align: center;
+    font-size: 10px;
+	width: 1170px;
+	font-family: 'Gudea',sans-serif;
+	padding-top:10px;
+}
+
+div.section {
+	text-align: left;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    color: #34322c;
+	padding-bottom:20px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-left:10px;
+    line-height: 22px;
+    font-size: 14px;
+    overflow: auto;
+    width: 860px;
+	margin-left:155px;
+	margin-top:15px;
+	margin-bottom:15px;
+	
+}
+
+div.formtext {
+	padding-top:10px;
+    padding-left:8px;
+}
+
+div.formtextnext {
+    padding-left:5px;
+	display:inline-block;
+   }
+
+div.positive {
+	text-align: center;
+	padding-top: 60px;
+	font-weight: bold;
+	background: url('../images/gradient1.png') top left repeat-x;
+	width: 1170px;
+	display:inline-block;
+	border-top: 2px solid #000;
+	height:131px;
+}
+
+div.positive a {
+    background: url('../images/button1.png') no-repeat;
+	display:inline-block;
+    color: #fff;
+    font-weight: bold;
+	font-size:24px;
+   	width: 330px;
+	height:70px;
+	padding-top: 15px;
+	margin-top:10px
+	text-decoration:none;
+		}
+
+div.error {
+    border: 2px solid #600;
+    background-color: #f99;
+    margin: 10px 150px 10px 150px;
+    padding: 5px;
+    text-align: center;
+}
+
+div.rightdiv {
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+div.leftdiv {
+    padding-right: 10px;
+	display:inline-block;
+}
+
+a {
+    color: #4F5155;
+    background-color: transparent;
+    font-weight: normal;
+	text-decoration:none;
+}
+
+br {
+    clear:left;
+	    margin-bottom: 10px;
+	
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+}
+
+label {
+    text-align: right;
+	font-size:18px;
+    display: block;
+    float: left;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+label.fixedwidthlabel {
+    padding-right: 20px;
+    width: 225px; 
+	margin-left:0px;
+	margin-top:5px;   
+}
+
+input[type=submit] {
+	background:#561f4b;
+	color:#FFF;
+	display:block;
+	margin-top:10px;
+}
+
+input[type=text] {
+	margin-top:10px;
+}
+
+input[name=deposit]{
+	display:block;
+}
+
+input[name=waiver]{
+	display:block;
+}
+
+input[name=both]{
+	display:block;
+}
+
+input[name=author1]{
+	margin-top:5px;
+}
+
+input[name=author2]{
+	margin-top:5px;
+}
+
+input[name=author3]{
+	margin-top:5px;
+}
+
+input[name=author4]{
+	margin-top:5px;
+}
+
+input[name=author5]{
+	margin-top:5px;
+}
+
+input[name=author6]{
+	margin-top:5px;
+}
+
+input[name=year]{
+	margin-top:5px;
+}
+
+input[name=volume]{
+	margin-top:5px;
+}
+
+input[name=issue]{
+	margin-top:5px;
+}
+
+input[name=peerreview]{
+	margin-top:5px;
+}
+
+input[name=doi]{
+	margin-top:0px;
+}
+
+input[name=netid]{
+	margin-top:0px;
+}
+
+input[name=title]{
+	margin-top:5px;
+}
+
+input[name=journaltitle]{
+	margin-top:5px;
+}
+
+input.smallbutton {
+    font-size: 8px;
+}
+
+select{
+	display:inline-block;
+	margin-top:5px;
+}
+
+select[name=peerreview]{
+	margin-top:5px;
+}
+
+select[name=peerreviewed]{
+	display:inline-block;
+	margin-top:25px;
+}
+
+li.showmore {
+    color: #900;
+    font-size: 10px;
+    font-style: italic;
+}
+
+code {
+    font-family: Monaco, Verdana, Sans-serif;
+    font-size: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #D0D0D0;
+    color: #002166;
+    display: block;
+    margin: 14px 0 14px 0;
+    padding: 12px 10px 12px 10px;
+}
