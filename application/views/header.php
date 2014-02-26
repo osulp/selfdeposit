@@ -14,7 +14,8 @@
     <body>
         <div id="header">
         <a href="http://www.oregonstate.edu" id="link"></a>
-	<h1><a href="<?php echo base_url(); ?>">Open Access Article Deposit and Waiver Form</a>
+	<h1><a href="http://osulibrary.oregonstate.edu/">OSU Libraries and Press</a><p>
+	<a href="<?php echo base_url(); ?>">Open Access Article Deposit and Waiver Form</a>
         <hr style="width:80%; text-align:left;margin-left:0">
         <p>
 	<?php echo $page_title; ?><p></h1>
