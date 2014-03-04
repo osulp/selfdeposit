@@ -86,15 +86,15 @@ class LDAPLogin extends EasyDeposit
     public static function _verify($data)
     {
         // Confirm username, but don't allow it to be edited
-        $data[] = array('Author', $_SESSION['user-firstname'] . ' ' . $_SESSION['user-surname'], 'ldaplogin', 'false');
+        $data[] = array('Depositor', $_SESSION['user-firstname'] . ' ' . $_SESSION['user-surname'], 'ldaplogin', 'false');
         return $data;
     }
 
     public static function _package($package)
     {
-        // Set the author name
+        // Set the author name, make the depositor only custodian
         $package->setCustodian($_SESSION['user-surname'] . ', ' . $_SESSION['user-firstname']);
-        $package->addCreator($_SESSION['user-surname'] . ', ' . $_SESSION['user-firstname']);
+        //$package->addCreator($_SESSION['user-surname'] . ', ' . $_SESSION['user-firstname']);
     }
 
     /**

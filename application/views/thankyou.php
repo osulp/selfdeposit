@@ -1,7 +1,7 @@
 <p>
 	<?php if ($ok == TRUE) { ?>
-	        Thank you for depositing your item. Once approved, the Libraries' Center for Digital Scholarship and Services will make the articles live in:<br>
-	        <a href="http://ir.library.oregonstate.edu/xmlui/handle/1957/43909">Open Access Articles Collection(OSU Faculty)</a><?php
+	        Once approved, the Libraries' Center for Digital Scholarship and Services will make the article available in:<br>
+	        <a href="http://ir.library.oregonstate.edu/xmlui/handle/1957/43909">Open Access Articles Collection (OSU Faculty)</a><?php
           }
           else
           { ?>

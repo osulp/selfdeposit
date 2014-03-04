@@ -7,9 +7,12 @@
     $section = '';
     $part3 = 'false';
 
+    //verify.php takes verify at each step
+    //the ldaplogin step verify username and changes to "Depositor"
+
     foreach ($verify as $part)
     {
-        if ($part[2] != $section)
+	if ($part[2] != $section)
         {
             if ($counter != 0)
             { ?>

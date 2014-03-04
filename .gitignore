@@ -1,2 +1,4 @@
 private/uploadfiles/*
 application/controllers/*.old
+application/logs/*
+.htaccess
