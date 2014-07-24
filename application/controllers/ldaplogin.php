@@ -148,7 +148,18 @@ class LDAPLogin extends EasyDeposit
                 			$_SESSION['user-surname'] = $surname;
                 			$_SESSION['user-email'] = $email;
 
-                			// Constuct a username made up of the netid and a random number
+                			//Cause cross site reference error	
+					//$grantcount = count($_POST['grants']);
+					//get from hidden field
+					$grantcount = $_POST['grantcount'];
+					$_SESSION['ldaplogin-grantcount'] = $grantcount;
+					$grantpointer = 1;
+					foreach ($_POST['grants'] as $key=>$value) {
+						$_SESSION['ldaplogin-grant' . $grantpointer] = $value;
+						$grantpointer++;
+					}
+				
+					// Constuct a username made up of the netid and a random number
                 			// (this allows them to make multiple deposits without overwriting
                 			//  their old deposit files)
                 			$_SESSION['username'] = $netid . mt_rand();

@@ -85,8 +85,16 @@ class CrossRefDOIMetadata extends EasyDeposit
 
     public static function _package($package)
     {
-        // Use the metadata in making the package
-        $package->setTitle($_SESSION['crossrefdoi-title']);
+        // Use the metadata in making the package 
+	// As currently, grant information will be appended and packed to title
+	$grantstring = '';
+	for ($grantpointer = 1; $grantpointer < $_SESSION['ldaplogin-grantcount']; $grantpointer++) {
+		$grantstring .= $_SESSION['ldaplogin-grant' . $grantpointer] . ', ';
+	}
+	$grantstring .= $_SESSION['ldaplogin-grant' . $_SESSION['ldaplogin-grantcount']];
+
+
+        $package->setTitle($_SESSION['crossrefdoi-title'] . ' (Grant: ' . $grantstring . ')');
         $citation = '';
 	//make sure it matches the lookup number
         for ($authorpointer = 1; $authorpointer <= $_SESSION['crossrefdoi-authorcount']; $authorpointer++)
