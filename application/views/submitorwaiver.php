@@ -14,7 +14,7 @@
 <input type="submit" name="deposit" value="Deposit into ScholarsArchive"/>
 <input type="hidden" name="uploadfilesstep" value="uploadfiles"/>
 </p>
-<b>Important</b> Deposit the author's accepted (post-peer review, pre-typeset) manuscipt of the article (preferably PDF). The article will be deposited to ScholarsArchive@OSU and will be available open access with a Creative Commons Attribution-Noncommercial license. Publisher embargoes will be observed.
+<b>Important:</b> Deposit the author's accepted (post-peer review, pre-typeset) manuscipt of the article (preferably PDF). The article will be deposited to ScholarsArchive@OSU. Publisher embargoes will be observed.
 </div>
 
 </div>
@@ -27,7 +27,7 @@
 <input type="submit" name="waiver" value="Obtain a waiver"/>
 <input type="hidden" name="sendwaiverstep" value="sendwaiver"/>
 </p>
-Waivers are automatically granted.
+Waivers to the OSU OA policy are automatically granted upon request.
 </div>
 
 </div>
