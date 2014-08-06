@@ -2,3 +2,4 @@ private/uploadfiles/*
 application/controllers/*.old
 application/logs/*
 .htaccess
+application/config/easydepoist.php

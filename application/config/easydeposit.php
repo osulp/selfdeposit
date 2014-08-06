@@ -36,17 +36,17 @@ $config['easydeposit_ssologin_surname'] = 'HTTP_SN';
 $config['easydeposit_ssologin_email'] = 'HTTP_MAIL';
 
 // ServiceDocument Login settings
-$config['easydeposit_servicedocumentlogin_url'] = 'http://ir-dev.library.oregonstate.edu/sword/servicedocument';
+//$config['easydeposit_servicedocumentlogin_url'] = 'http://ir-dev.library.oregonstate.edu/sword/servicedocument';
 //$config['easydeposit_servicedocumentlogin_url'] = 'http://lib-scholars-dev1.library.oregonstate.edu:8080/sword/servicedocument';
-//$config['easydeposit_servicedocumentlogin_url'] = 'http://ir.library.oregonstate.edu/sword/servicedocument';
+$config['easydeposit_servicedocumentlogin_url'] = 'http://ir.library.oregonstate.edu/sword/servicedocument';
 
 // A list of service documents to provide in the selectrepository step
 $config['easydeposit_selectrepository_list'] = array('http://localhost:8080/sword/servicedocument', 'http://demo.dspace.org/sword/servicedocument', 'http://sword.eprints.org/sword-app/servicedocument', 'http://sword.intralibrary.com/IntraLibrary-Deposit/');
 
 // Credentials with which to retrieve a service document automatically
-$config['easydeposit_retrieveservicedocument_url'] = "http://ir-dev.library.oregonstate.edu/sword/servicedocument";
+//$config['easydeposit_retrieveservicedocument_url'] = "http://ir-dev.library.oregonstate.edu/sword/servicedocument";
 //$config['easydeposit_retrieveservicedocument_url'] = "http://lib-scholars-dev1.library.oregonstate.edu:8080/sword/servicedocument";
-//$config['easydeposit_retrieveservicedocument_url'] = "http://ir.library.oregonstate.edu/sword/servicedocument";
+$config['easydeposit_retrieveservicedocument_url'] = "http://ir.library.oregonstate.edu/sword/servicedocument";
 $config['easydeposit_retrieveservicedocument_username'] = "openaccess@library.oregonstate.edu";
 $config['easydeposit_retrieveservicedocument_password'] = "v@lley3730";
 $config['easydeposit_retrieveservicedocument_obo'] = "";
@@ -68,9 +68,9 @@ $config['easydeposit_deposit_packages'] = 'private/uploadfiles/';
 $config['easydeposit_multipledeposit_packages'] = "private/uploadfiles/";
 
 // Hard code depositurl, login and password if using the depositcredentials step
-$config['easydeposit_depositcredentials_depositurl'] = 'http://ir-dev.library.oregonstate.edu/sword/deposit/1957/38282';
+//$config['easydeposit_depositcredentials_depositurl'] = 'http://ir-dev.library.oregonstate.edu/sword/deposit/1957/38282';
 //$config['easydeposit_depositcredentials_depositurl'] = 'http://lib-scholars-dev1.library.oregonstate.edu:8080/sword/deposit/1957/38282';
-//$config['easydeposit_depositcredentials_depositurl'] = 'http://ir.library.oregonstate.edu/sword/deposit/1957/43909';
+$config['easydeposit_depositcredentials_depositurl'] = 'http://ir.library.oregonstate.edu/sword/deposit/1957/43909';
 $config['easydeposit_depositcredentials_username'] = 'openaccess@library.oregonstate.edu';
 $config['easydeposit_depositcredentials_password'] = 'v@lley3730';
 $config['easydeposit_depositcredentials_obo'] = '';
