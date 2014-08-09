@@ -113,17 +113,17 @@ class LDAPLogin extends EasyDeposit
     function _ldaplogin($netid)
     {
         try {
-            // Bind to the DAP server using the user's credentials
-	    	// using ldap bind
-	    	$ldaprdn  = 'uid=lib_proxy,ou=specials,o=orst.edu';     // ldap rdn or dn
+		// Bind to the DAP server using the user's credentials
+	    // using ldap bind
+	    $ldaprdn  = 'uid=lib_proxy,ou=specials,o=orst.edu';     // ldap rdn or dn
 		$ldappass = 'Lah7ahpa';  // associated password
 
 		// connect to ldap server
 		$ldapconn = ldap_connect("ldaps://ldap.onid.orst.edu");
 
 		if ($ldapconn) {
-    			// binding to ldap server
-    			$bind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
+    		// binding to ldap server
+    		$bind = ldap_bind($ldapconn, $ldaprdn, $ldappass);
 			// verify binding
     			if ($bind) {
 				// Search for the user by their netid
@@ -147,17 +147,6 @@ class LDAPLogin extends EasyDeposit
                 			$_SESSION['user-firstname'] = $firstname;
                 			$_SESSION['user-surname'] = $surname;
                 			$_SESSION['user-email'] = $email;
-
-                			//Cause cross site reference error	
-					//$grantcount = count($_POST['grants']);
-					//get from hidden field
-					$grantcount = $_POST['grantcount'];
-					$_SESSION['ldaplogin-grantcount'] = $grantcount;
-					$grantpointer = 1;
-					foreach ($_POST['grants'] as $key=>$value) {
-						$_SESSION['ldaplogin-grant' . $grantpointer] = $value;
-						$grantpointer++;
-					}
 				
 					// Constuct a username made up of the netid and a random number
                 			// (this allows them to make multiple deposits without overwriting

@@ -1,11 +1,8 @@
 <p>
 	Please check the item description and edit if incorrect:
-<p style="text-indent: 2em;">
-	    - <font size="5">'*'</font> indicates required field
-</p>
-<p style="text-indent: 2em;">
-            - this session will expire in one hour
-</p>
+<p style="text-indent: 2em;">- <font size="5">'*'</font> indicates required field</p>
+
+<p style="text-indent: 2em;">- this session will expire in one hour</p>
 </p>
 
 <?php echo validation_errors(); ?>

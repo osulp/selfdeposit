@@ -19,7 +19,7 @@ $config['easydeposit_welcome_title'] = "Welcome";
 
 // The steps that a submission should take
 // The first of these should be a login step that has public static methods _loggedin and _id
-$config['easydeposit_steps'] = array('ldaplogin', 'depositcredentials', 'crossrefdoilookup', 'crossrefdoimetadata', 'submitorwaiver', 'uploadfiles', 'verify', 'deposit', 'email', 'thankyou', 'sendwaiver', 'waiver');
+$config['easydeposit_steps'] = array('ldaplogin', 'depositcredentials', 'crossrefdoilookup', 'nihgrantmetadata', 'crossrefdoimetadata', 'submitorwaiver', 'uploadfiles', 'verify', 'deposit', 'email', 'thankyou', 'sendwaiver', 'waiver');
 
 // Email address for support enquiries for users of the client
 $config['easydeposit_supportemail'] = 'scholarsarchive@oregonstate.edu';

@@ -19,8 +19,8 @@ class CrossRefDOILookup extends EasyDeposit
         // Set the page title
         $data['page_title'] = 'Enter DOI';
 
-        // Validate the form
-	// Not required to allow empty DOI for editing metadata
+        // Validate the form, _lookupdoi
+		// Not required to allow empty DOI for editing metadata
         $this->form_validation->set_rules('doi', 'DOI', '_clean|callback__lookupdoi');
         if (!empty($_POST['doi'])) $_SESSION['crossref-doi'] = $_POST['doi'];
         if ($this->form_validation->run() == FALSE)
@@ -43,12 +43,14 @@ class CrossRefDOILookup extends EasyDeposit
      */
     function _lookupdoi($doi)
     {
-        //handle empty doi and pass information to edit metadata
+    	/**
+	 *handle empty doi and pass information to edit metadata
+	 */
 	if (empty($doi)) 
 	{
         $_SESSION['crossrefdoi-title'] = '';
-	$_SESSION['crossrefdoi-author1'] = '';
-        for ($authorcount = 2;  $authorcount <= 5; $authorcount++)
+		$_SESSION['crossrefdoi-author1'] = '';
+		for ($authorcount = 2;  $authorcount <= 5; $authorcount++)
         {
             $_SESSION['crossrefdoi-author' . $authorcount] = '';
         }

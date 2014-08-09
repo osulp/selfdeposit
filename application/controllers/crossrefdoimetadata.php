@@ -58,9 +58,9 @@ class CrossRefDOIMetadata extends EasyDeposit
 
     public static function _verify($data)
     {
-        // Verify the metadata that has been stored
+        // Verify the metadata, include NIH grant, that has been stored
         $data[] = array('Title', $_SESSION['crossrefdoi-title'], 'crossrefdoimetadata', 'true');
-	//make sure it matches the lookup number
+		//make sure it matches the lookup number
         for ($authorpointer = 1; $authorpointer <= $_SESSION['crossrefdoi-authorcount']; $authorpointer++)
         {
             $data[] = array('Author ' . $authorpointer, $_SESSION['crossrefdoi-author' . $authorpointer], 'crossrefdoimetadata', 'true');
@@ -79,66 +79,88 @@ class CrossRefDOIMetadata extends EasyDeposit
         {
             $data[] = array('Issue', $_SESSION['crossrefdoi-issue'], 'crossrefdoimetadata', 'true');
         }
+        
+	$array[] = array('PI Email', $_SESSION['nihgrantmetadata-email'], 'nihgrantmetadata', 'true');
+		
+        for ($grantpointer = 1; $grantpointer <= $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++)
+		{
+			$data[] = array('Grant Number ' . $grantpointer, $_SESSION['$nihgrantmetadata' . $grantpointer], 'nihgrantmetadata', 'true');
+ 		}
+		
+        for ($pipointer = 1; $pipointer <= $_SESSION['nihgrantmetadata-picount'] $pipointer++)
+		{
+			$data[] = array('Grant PI ' . $pipointer, $_SESSION['$nihgrantmetadata' . $pipointer], 'nihgrantmetadata', 'true');
+ 		}
 
         return $data;
     }
 
     public static function _package($package)
     {
-        // Use the metadata in making the package 
-	// As currently, grant information will be appended and packed to title
-	$grantstring = '';
-	for ($grantpointer = 1; $grantpointer < $_SESSION['ldaplogin-grantcount']; $grantpointer++) {
-		$grantstring .= $_SESSION['ldaplogin-grant' . $grantpointer] . ', ';
-	}
-	$grantstring .= $_SESSION['ldaplogin-grant' . $_SESSION['ldaplogin-grantcount']];
-
-
-        $package->setTitle($_SESSION['crossrefdoi-title'] . ' (Grant: ' . $grantstring . ')');
+    // Use the metadata in making the package 
+        $package->setTitle($_SESSION['crossrefdoi-title']);
         $citation = '';
 	//make sure it matches the lookup number
         for ($authorpointer = 1; $authorpointer <= $_SESSION['crossrefdoi-authorcount']; $authorpointer++)
         {
             $package->addCreator($_SESSION['crossrefdoi-author' . $authorpointer]);
-            $citation .= $_SESSION['crossrefdoi-author' . $authorpointer] . ','; 
+            //change to ';'
+	    $citation .= $_SESSION['crossrefdoi-author' . $authorpointer] . ';'; 
         }
         $citation .= ' ' . $_SESSION['crossrefdoi-year'] . '. ';
         $citation .= $_SESSION['crossrefdoi-title'] . '. ';
         $citation .= $_SESSION['crossrefdoi-journaltitle'] . ' ';
         $citation .= $_SESSION['crossrefdoi-volume'] . ' (';
         $citation .= $_SESSION['crossrefdoi-issue'] . ')';
-
+		
+		// As currently, grant information will be appended and packed to citation
+		$grantstring = '';
+		for ($grantpointer = 1; $grantpointer < $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++) {
+			$grantstring .= $_SESSION['nihgrantmetadata-grant' . $grantpointer] . ', ';
+		}
+		$grantstring .= $_SESSION['nihgrantmetadata-grant' . $_SESSION['nihgrantmetadata-grantcount']];
+		
+		$pistring = '';
+		for ($pipointer = 1; $pipointer < $_SESSION['nihgrantmetadata-picount']; $pipointer++) {
+			$pistring .= $_SESSION['nihgrantmetadata-pi' . $pipointer] . ', ';
+		}
+		$pistring .= $_SESSION['nihgrantmetadata-pi' . $_SESSION['nihgrantmetadata-picount']];
+		
+		if (!empty($_SESSION['nihgrantmetadata-email'])) {
+			$citation .= 'NIH Grant: ' . '(' . $_SESSION['nihgrantmetadata-email'] . ' ' . $grantstring . ' ' . $pistring . ')';
+		}
+				
         $package->setCitation($citation);
         $data[] = array('Type of item', $_SESSION['crossrefdoi-type'], 'metadata', 'true');
         $data[] = array('Has the item been peer reviewed?', $_SESSION['crossrefdoi-peerreviewed'], 'metadata', 'true');
     }
 
-    public static function _email($message)
-    {
-        // Add the details
-        $message .= "Thank you for depositing an electronic copy of your item '" . $_SESSION['crossrefdoi-title'] . "'" . ":\n";
-	//make sure it matches the lookup number
-        for ($authorpointer = 1; $authorpointer <= $_SESSION['crossrefdoi-authorcount']; $authorpointer++)
-        {
-            $message .= ' - Author: ' . $_SESSION['crossrefdoi-author' . $authorpointer] . "\n";            
-        }
-        if (!empty($_SESSION['crossrefdoi-journaltitle']))
-        {
-            $message .= ' - Journal title: ' . $_SESSION['crossrefdoi-journaltitle'] . "\n";
-        }
-        if (!empty($_SESSION['crossrefdoi-year']))
-        {
-            $message .= ' - Year: ' . $_SESSION['crossrefdoi-year'] . "\n";
-        }
-        if (!empty($_SESSION['crossrefdoi-volume']))
-        {
-            $message .= ' - Journal volume: ' . $_SESSION['crossrefdoi-volume'] . "\n";
-        }
-        if (!empty($_SESSION['crossrefdoi-issue']))
-        {
-            $message .= ' - Journal issue: ' . $_SESSION['crossrefdoi-issue'] . "\n";
-        }
-        $message .= "\n";
+    public static function _email($message) { 
+	// Add the details 
+	$message .= "Thank you for depositing an electronic copy of your item '" . $_SESSION['crossrefdoi-title'] . "'" . ":\n"; 
+	//make sure it matches the lookup number 
+	for ($authorpointer = 1; $authorpointer <= $_SESSION['crossrefdoi-authorcount']; $authorpointer++) 
+	{ 
+		$message .= ' - Author: ' . $_SESSION['crossrefdoi-author' . $authorpointer] . "\n"; 
+	}
+	if (!empty($_SESSION['crossrefdoi-journaltitle'])) { $message .= ' - Journal title: ' . $_SESSION['crossrefdoi-journaltitle'] . "\n";} 
+	if (!empty($_SESSION['crossrefdoi-year'])) { $message .= ' - Year: ' . $_SESSION['crossrefdoi-year'] . "\n"; } 
+	if (!empty($_SESSION['crossrefdoi-volume'])) { $message .= ' - Journal volume: ' . $_SESSION['crossrefdoi-volume'] . "\n"; } 
+	if (!empty($_SESSION['crossrefdoi-issue'])) { $message .= ' - Journal issue: ' . $_SESSION['crossrefdoi-issue'] . "\n"; } 
+	
+	if (!empty($_SESSION[''])) {
+		$message .= '- PI Email: ' . $_SESSION['nihgrantmetadata-email'] . "\n";
+		
+		for ($grantpointer =1; $grantpointer <= $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++) {
+			$message .= '- Grant Number: ' . $_SESSION['nihgrantmetadata-grant' . $grantpointer] . "\n";
+		}
+		
+		for ($pipointer =1; $pipointer <= $_SESSION['nihgrantmetadata-picount']; $pipointer++) {
+			$message .= '- PI: ' . $_SESSION['nihgrantmetadata-pi' . $pipointer] . "\n"; 
+		}
+	}
+	
+	$message .= "\n";
 
         return $message;
     }
