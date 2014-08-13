@@ -1,12 +1,11 @@
 <?php
 
-// Name: NIHGrantMetadata
+// Name: Nihgrantmetadata
 // Description: Articles supported by NIH grants
-// Notes: This step must be preceeded by the CrossRefDOIMetadata step
 
 require_once('EasyDeposit.php');
 
-class NIHGrantMetadata extends EasyDeposit
+class Nihgrantmetadata extends EasyDeposit
 {
     function NIHGrantMetadata()
     {
@@ -17,12 +16,13 @@ class NIHGrantMetadata extends EasyDeposit
     function index()
     {
         // Validate the form
-        $this->form_validation->set_rules('title', 'Title', '_clean|required');
+	// without appending 'required' with callback, one bypass form check means empty email is ok
+	// TODO: callback entergrantinfo
+        $this->form_validation->set_rules('nihgrantemail', 'Email', '_clean|callback__entergrantinfo');
         if ($this->form_validation->run() == FALSE)
         {
-            // Set the page title
-            $data['page_title'] = 'NIH Grant Metadata';
-
+	    // Set the page title
+	    $data['page_title'] = 'NIH Grant Metadata';
             // Display the header, page, and footer
             $this->load->view('header', $data);
             $this->load->view('nihgrantmetadata');
@@ -30,46 +30,79 @@ class NIHGrantMetadata extends EasyDeposit
         }
         else
         {
-            // Store the metadata back into the session
             $_SESSION['nihgrantmetadata-email'] = $_POST['nihgrantemail'];
-	
-	    //$grantcount = count($_POST['grants']); cause cross site reference error
-            //get from hidden field
-            $grantcount = $_POST['grantcount'];
-            $_SESSION['nihgrantmetadata-grantcount'] = $grantcount;
-            $grantpointer = 1;
-            foreach ($_POST['grants'] as $key=>$value) {
-           	$_SESSION['nihgrantmetadata-grant' . $grantpointer] = $value;
-             	$grantpointer++;
-            }
-
+	    $grantcount = $_POST['grantcount'];
             $picount = $_POST['picount'];
-            $_SESSION['nihgrantmetadata-picount'] = $picount;
-            $pipointer = 1;
-            foreach ($_POST['pis'] as $key=>$value) {
-                $_SESSION['nihgrantmetadata-pi' . $pipointer] = $value;
-                $pipointer++;
-            }
+            
+                $_SESSION['nihgrantmetadata-grantcount'] = $grantcount;
+                $grantpointer = 1;
+                foreach ($_POST['grants'] as $key=>$value) {
+                        $_SESSION['nihgrantmetadata-grant' . $grantpointer] = $value;
+                        $grantpointer++;
+                }
 
-            // Go to the next page
+                $_SESSION['nihgrantmetadata-picount'] = $picount;
+                $pipointer = 1;
+                foreach ($_POST['pis'] as $key=>$value) {
+                        $_SESSION['nihgrantmetadata-pi' . $pipointer] = $value;
+                        $pipointer++;
+                }
+
+	    // Go to the next page
             $this->_gotonextstep();
         }
     }
 
     public static function _verify($data)
     {
-        // No metadata to verify - this is done in the crossrefdoimetadata step
-        return $data;
+	$data[] = array('Primary Author Email', $_SESSION['nihgrantmetadata-email'], 'nihgrantmetadata', 'true');
+
+	return $data;
     }
 
     public static function _package($package)
     {
-        // No metadata to package - this is done in the crossrefdoimetadata step
+	//get all citation from session
+	$citation = $_SESSION['crossrefmetadata-citation'];         
+ 
+	      // As currently, grant information will be appended and packed to citation
+                $grantstring = '';
+                for ($grantpointer = 1; $grantpointer < $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++) {
+                        $grantstring .= $_SESSION['nihgrantmetadata-grant' . $grantpointer] . ', ';
+                }
+                $grantstring .= $_SESSION['nihgrantmetadata-grant' . $_SESSION['nihgrantmetadata-grantcount']];
+
+                $pistring = '';
+                for ($pipointer = 1; $pipointer < $_SESSION['nihgrantmetadata-picount']; $pipointer++) {
+                        $pistring .= $_SESSION['nihgrantmetadata-pi' . $pipointer] . ', ';
+                }
+                $pistring .= $_SESSION['nihgrantmetadata-pi' . $_SESSION['nihgrantmetadata-picount']];
+
+                if (!empty($_SESSION['nihgrantmetadata-email'])) {
+                        $citation .= ' NIH Grant: ' . '(' . $_SESSION['nihgrantmetadata-email'] . '; ' . $grantstring . '; ' . $pistring . ')';
+                }
+	
+        $package->setCitation($citation);
+
     }
 
     public static function _email($message)
     {
-        // No metadata to email - this is done in the crossrefdoimetadata step
+        
+	if (!empty($_SESSION['nihgrantmetadata-email'])) {
+                $message .= '- PI Email: ' . $_SESSION['nihgrantmetadata-email'] . "\n";
+
+                for ($grantpointer =1; $grantpointer <= $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++) {
+                        $message .= '- Grant Number: ' . $_SESSION['nihgrantmetadata-grant' . $grantpointer] . "\n";
+                }
+
+                for ($pipointer =1; $pipointer <= $_SESSION['nihgrantmetadata-picount']; $pipointer++) {
+                        $message .= '- PI: ' . $_SESSION['nihgrantmetadata-pi' . $pipointer] . "\n";
+                }
+        }
+
+        $message .= "\n";
+	
         return $message;
     }
 }
