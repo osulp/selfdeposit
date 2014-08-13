@@ -20,7 +20,7 @@ class CrossRefDOILookup extends EasyDeposit
         $data['page_title'] = 'Enter DOI';
 
         // Validate the form, _lookupdoi
-		// Not required to allow empty DOI for editing metadata
+	// Callback not required DOI must be a value to allow empty DOI for editing metadata
         $this->form_validation->set_rules('doi', 'DOI', '_clean|callback__lookupdoi');
         if (!empty($_POST['doi'])) $_SESSION['crossref-doi'] = $_POST['doi'];
         if ($this->form_validation->run() == FALSE)

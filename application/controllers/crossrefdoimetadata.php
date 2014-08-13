@@ -8,7 +8,7 @@ require_once('EasyDeposit.php');
 
 class CrossRefDOIMetadata extends EasyDeposit
 {
-    function CrossREFDOIMetadata()
+    function CrossRefDOIMetadata()
     {
         // Initalise the parent
         parent::__construct();
@@ -79,18 +79,6 @@ class CrossRefDOIMetadata extends EasyDeposit
         {
             $data[] = array('Issue', $_SESSION['crossrefdoi-issue'], 'crossrefdoimetadata', 'true');
         }
-        
-	$array[] = array('PI Email', $_SESSION['nihgrantmetadata-email'], 'nihgrantmetadata', 'true');
-		
-        for ($grantpointer = 1; $grantpointer <= $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++)
-		{
-			$data[] = array('Grant Number ' . $grantpointer, $_SESSION['$nihgrantmetadata' . $grantpointer], 'nihgrantmetadata', 'true');
- 		}
-		
-        for ($pipointer = 1; $pipointer <= $_SESSION['nihgrantmetadata-picount'] $pipointer++)
-		{
-			$data[] = array('Grant PI ' . $pipointer, $_SESSION['$nihgrantmetadata' . $pipointer], 'nihgrantmetadata', 'true');
- 		}
 
         return $data;
     }
@@ -112,27 +100,10 @@ class CrossRefDOIMetadata extends EasyDeposit
         $citation .= $_SESSION['crossrefdoi-journaltitle'] . ' ';
         $citation .= $_SESSION['crossrefdoi-volume'] . ' (';
         $citation .= $_SESSION['crossrefdoi-issue'] . ')';
+
+	$_SESSION['crossrefmetadata-citation'] = $citation;
 		
-		// As currently, grant information will be appended and packed to citation
-		$grantstring = '';
-		for ($grantpointer = 1; $grantpointer < $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++) {
-			$grantstring .= $_SESSION['nihgrantmetadata-grant' . $grantpointer] . ', ';
-		}
-		$grantstring .= $_SESSION['nihgrantmetadata-grant' . $_SESSION['nihgrantmetadata-grantcount']];
-		
-		$pistring = '';
-		for ($pipointer = 1; $pipointer < $_SESSION['nihgrantmetadata-picount']; $pipointer++) {
-			$pistring .= $_SESSION['nihgrantmetadata-pi' . $pipointer] . ', ';
-		}
-		$pistring .= $_SESSION['nihgrantmetadata-pi' . $_SESSION['nihgrantmetadata-picount']];
-		
-		if (!empty($_SESSION['nihgrantmetadata-email'])) {
-			$citation .= 'NIH Grant: ' . '(' . $_SESSION['nihgrantmetadata-email'] . ' ' . $grantstring . ' ' . $pistring . ')';
-		}
-				
         $package->setCitation($citation);
-        $data[] = array('Type of item', $_SESSION['crossrefdoi-type'], 'metadata', 'true');
-        $data[] = array('Has the item been peer reviewed?', $_SESSION['crossrefdoi-peerreviewed'], 'metadata', 'true');
     }
 
     public static function _email($message) { 
@@ -147,18 +118,6 @@ class CrossRefDOIMetadata extends EasyDeposit
 	if (!empty($_SESSION['crossrefdoi-year'])) { $message .= ' - Year: ' . $_SESSION['crossrefdoi-year'] . "\n"; } 
 	if (!empty($_SESSION['crossrefdoi-volume'])) { $message .= ' - Journal volume: ' . $_SESSION['crossrefdoi-volume'] . "\n"; } 
 	if (!empty($_SESSION['crossrefdoi-issue'])) { $message .= ' - Journal issue: ' . $_SESSION['crossrefdoi-issue'] . "\n"; } 
-	
-	if (!empty($_SESSION[''])) {
-		$message .= '- PI Email: ' . $_SESSION['nihgrantmetadata-email'] . "\n";
-		
-		for ($grantpointer =1; $grantpointer <= $_SESSION['nihgrantmetadata-grantcount']; $grantpointer++) {
-			$message .= '- Grant Number: ' . $_SESSION['nihgrantmetadata-grant' . $grantpointer] . "\n";
-		}
-		
-		for ($pipointer =1; $pipointer <= $_SESSION['nihgrantmetadata-picount']; $pipointer++) {
-			$message .= '- PI: ' . $_SESSION['nihgrantmetadata-pi' . $pipointer] . "\n"; 
-		}
-	}
 	
 	$message .= "\n";
 
