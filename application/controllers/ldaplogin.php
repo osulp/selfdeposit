@@ -40,7 +40,8 @@ class LDAPLogin extends EasyDeposit
         if ($this->form_validation->run() == FALSE)
         {
             // Set the page title
-            $data['page_title'] = 'Depositor';
+            //$data['page_title'] = 'Depositor';
+            $data['page_title'] = '';
 
             // Display the header, page, and footer
             $this->load->view('header', $data);

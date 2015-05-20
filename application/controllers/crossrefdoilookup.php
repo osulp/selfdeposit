@@ -17,7 +17,8 @@ class CrossRefDOILookup extends EasyDeposit
     function index()
     {
         // Set the page title
-        $data['page_title'] = 'Enter DOI';
+        // $data['page_title'] = 'Enter DOI';
+        $data['page_title'] = '';
 
         // Validate the form, _lookupdoi
 	// Callback not required DOI must be a value to allow empty DOI for editing metadata

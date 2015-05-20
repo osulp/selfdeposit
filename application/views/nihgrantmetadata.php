@@ -1,5 +1,5 @@
 <p>
-	ONLY required if article is supported by NIH grants, otherwise leave it blank and click Next.  
+	ONLY required if article is supported by NIH or DOE grants, otherwise leave the page blank and click Next.  
 </p>
 
 <?php echo validation_errors(); ?>
@@ -56,7 +56,8 @@ $(function() {
 
 <div class="section">
     <div class="formtext">
-	As of February 2013, NIH policy requires that all articles produced from non-competing grant awards, starting July 1, 2013 or later, must show compliance with the NIHMS Public Access Policy (http://publicaccess.nih.gov/) by completing the submission process to PubMed Central within 3 months of publication. Please provide the following information and one of our staff will deposit your article into PubMed Central and ScholarsArchive@OSU on your behalf.
+	Some federal agencies requrie deposit of articles to federal repositories like PubMed Central or PAGES. NSF and DOE allow libraries to deposit articles to 
+	these repositories on the author's behalf. If you would like the library to do this for you, provide the following information.
     </div>
 </div>
 
