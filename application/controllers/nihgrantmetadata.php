@@ -22,8 +22,10 @@ class Nihgrantmetadata extends EasyDeposit
         if ($this->form_validation->run() == FALSE)
         {
 	    // Set the page title
-	    $data['page_title'] = 'NIH Grant Metadata';
-            // Display the header, page, and footer
+	    // $data['page_title'] = 'NIH Grant Metadata';
+	    $data['page_title'] = 'Federal Agency Deposit';
+            
+	    // Display the header, page, and footer
             $this->load->view('header', $data);
             $this->load->view('nihgrantmetadata');
             $this->load->view('footer');
