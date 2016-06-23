@@ -114,7 +114,18 @@ class LDAPLogin extends EasyDeposit
     function _ldaplogin($netid)
     {
         try {
-		// Bind to the DAP server using the user's credentials
+	  //save valid email in the session
+	  if (filter_var($netid, FILTER_VALIDATE_EMAIL)) {
+		$firstname = 'Depositor';
+                $surname = '';
+                $email = $netid;
+                $_SESSION['user-firstname'] = $firstname;
+                $_SESSION['user-surname'] = $surname;
+                $_SESSION['user-email'] = $email;
+		$_SESSION['username'] = $netid . mt_rand();
+		return TRUE;
+	  }
+	    // Bind to the DAP server using the user's credentials
 	    // using ldap bind
 	    $ldaprdn  = 'uid=lib_proxy,ou=specials,o=orst.edu';     // ldap rdn or dn
 		$ldappass = 'Lah7ahpa';  // associated password
@@ -134,10 +145,14 @@ class LDAPLogin extends EasyDeposit
             			// If no items are returned, the login must have been bad
             			if ($items['count'] == 0)
             			{
-                			$this->form_validation->set_message('_ldaplogin', 'Bad ' .
+					$this->form_validation->set_message('_ldaplogin', 'Bad ' .
                                                     $this->config->item('easydeposit_ldaplogin_netidname') .
-                                                    ' or password');
-                			return FALSE;
+                                                    ' or contact email');
+					return FALSE;
+                			//$this->form_validation->set_message('_ldaplogin', 'Bad ' .
+                                        //            $this->config->item('easydeposit_ldaplogin_netidname') .
+                                        //            ' or contact email');
+                			//return FALSE;
             			}
             			else
             			{
