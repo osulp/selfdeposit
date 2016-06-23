@@ -1,22 +1,13 @@
-Welcome to the EasyDeposit PHP client!
+Welcome to the SelfDeposit
 --------------------------------------
-Version: 0.1
 
-The EasyDeposit client is a PHP powered configurable SWORD repository deposit
-client. The client can be easily configured to allow you to create a custom
-deposit interface for your repository. 'Steps' can be added or removed from
-the client to tailor it to your own requirements, new custom steps can be
-easily created, and the look and feel of the client can be easily changed
-by editing the CSS and header and footer files.
-
-EasyDeposit was originally written by Stuart Lewis (stuart@stuartlewis.com) at
-The University of Auckland Library.
-
+The SelfDeposit client is a PHP powered configurable SWORD repository deposit
+client. 
 
 Licence
 -------
 The library is licenced with a BSD licence. See the file LICENCE in the
-distribution directory.
+distribution directory. SelfDeposit is powered by Easydepoist written by Stuart Lewis. 
 
 The software is based on the CodeIgniter platform:
 
@@ -35,41 +26,3 @@ SWORD Compatibility
 This version of the library is compatible with SWORD version 1.3
 
 
-Prerequisites
--------------
-This library requires:
-
- - PHP version 5
-    + CURL extension
-    + SimpleXML extension
-    + ZIP extension
-    + LDAP module (only if you wish to use LDAP authentication)
-
-
-Documentation
--------------
-View documentation, including installation instructions at:
-
- - http://easydeposit.swordapp.org/
-
-
-Changes
--------
-1.0 (10 February 2010)
- - New administrative interface to edit options and run a system check
- - Improvements to the installation process to make it easier to install
- - New DOI metadata step that populates metadata using the CrossRef API
- - Better session and cookie handling allowing multiple instances to run
-   on a single server
- - New multipledeposit step to enable deposit to multiple URLs
- - Name of client (shown on welcome page) can be configured
- - Deposits without files can be made
- - Deposits accept any 20x response code as success
- - Fixed 'localhost' / Firefox cookie issue
- - Fixed images when mod_rewrite isn't being used
- - Upgrade to CodeIgniter 2.0
- - Addition of ssologin login step to support SSO systems such as
-   Shibboleth or CoSign
-
-0.1 (7th October 2009)
-  - First release

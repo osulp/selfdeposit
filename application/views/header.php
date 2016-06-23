@@ -10,7 +10,17 @@
         <?php if (!empty($javascript)) { foreach ($javascript as $js): ?>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/<?php echo $js; ?>"></script>
         <?php endforeach; } ?>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-35760875-14', 'auto');
+          ga('send', 'pageview');
+
+        </script>
     </head>
     <body>
         <div id="header">
