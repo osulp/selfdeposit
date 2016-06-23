@@ -25,7 +25,7 @@ $config['easydeposit_steps'] = array('ldaplogin', 'depositcredentials', 'crossre
 $config['easydeposit_supportemail'] = 'scholarsarchive@oregonstate.edu';
 
 // LDAP login settings
-$config['easydeposit_ldaplogin_netidname'] = "ONID";
+$config['easydeposit_ldaplogin_netidname'] = "Contact";
 $config['easydeposit_ldaplogin_server'] = "ldaps://ldap.example.com";
 $config['easydeposit_ldaplogin_context'] = "OU=users,DC=example,DC=com";
 
@@ -84,7 +84,7 @@ $config['easydeposit_multipledepositcredentials_obo'] = array('', '');
 // Email settings
 $config['easydeposit_email_from'] = "scholarsarchive@oregonstate.edu";
 $config['easydeposit_email_fromname'] = "ScholarsArchive";
-$config['easydeposit_email_cc'] = "scholarsarchive@oregonstate.edu";
+$config['easydeposit_email_cc'] = "scholarsarchive@oregonstate.edu, openaccess@library.oregonstate.edu";
 $config['easydeposit_email_subject'] = "Thank you for your cooperation";
 $config['easydeposit_email_end'] = "Best wishes,\n\nThe repository team\nscholarsarchive@oregonstate.edu";
 
