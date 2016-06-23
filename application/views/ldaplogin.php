@@ -1,5 +1,5 @@
 <p>
-	Please enter the <?php echo $netidname; ?> username of the person making the deposit.
+	Please enter the <?php echo $netidname; ?> information of the person making the deposit.
 </p>
 
 <?php echo validation_errors(); ?>
@@ -9,8 +9,8 @@
 <div class="section">
 
     <div class="formtext">
-        <label for="netid"><?php echo $netidname; ?>:</label>
-        <input type="text" id="netid" name="netid" size="10" value="<?php echo set_value('netid'); ?>" />
+        <label for="netid"><?php echo $netidname; ?> (ONID or email):</label>
+        <input type="text" id="netid" name="netid" size="20" value="<?php echo set_value('netid'); ?>" />
     </div>
 
     <!--

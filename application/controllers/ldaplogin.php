@@ -114,7 +114,18 @@ class LDAPLogin extends EasyDeposit
     function _ldaplogin($netid)
     {
         try {
-		// Bind to the DAP server using the user's credentials
+	  //save valid email in the session
+          if (filter_var($netid, FILTER_VALIDATE_EMAIL)) {
+                $firstname = 'Depositor';
+                $surname = '';
+                $email = $netid;
+                $_SESSION['user-firstname'] = $firstname;
+                $_SESSION['user-surname'] = $surname;
+                $_SESSION['user-email'] = $email;
+                $_SESSION['username'] = $netid . mt_rand();
+                return TRUE;
+          }
+	    // Bind to the DAP server using the user's credentials
 	    // using ldap bind
 	    $ldaprdn  = 'uid=lib_proxy,ou=specials,o=orst.edu';     // ldap rdn or dn
 		$ldappass = 'Lah7ahpa';  // associated password
