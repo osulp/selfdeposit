@@ -27,7 +27,7 @@
 <input type="submit" name="waiver" value="Obtain a waiver"/>
 <input type="hidden" name="sendwaiverstep" value="sendwaiver"/>
 </p>
-Waivers to the OSU OA policy are automatically granted upon request.
+If you don't wish to deposit your article, select this buttion. Waivers to the OSU OA policy are automatically granted upon request.
 </div>
 
 </div>
