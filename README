@@ -1,28 +1,16 @@
-Welcome to the SelfDeposit
---------------------------------------
+# Repository Self Deposit Tool for Researchers (SelfDeposit)
 
-The SelfDeposit client is a PHP powered configurable SWORD repository deposit
-client. 
+SelfDeposit is a web-based tool for researchers to deposit articles and datasets into institutional repository who are un-familar with the UI of a repostiory. It also has the feature of auto-filling metadata records by integrating with the CrossRef API.
 
-Licence
--------
-The library is licenced with a BSD licence. See the file LICENCE in the
-distribution directory. SelfDeposit is powered by Easydepoist written by Stuart Lewis. 
+##Technology stack:
+1. DSpace 3.0 and above
+2. Php and CodeIgniter
+3. Easydeposit library
 
-The software is based on the CodeIgniter platform:
+##Configuration:
+1. Enable SWORD server with DSpace
+2. Setup DSpace repository for SWORD ingestions, including creation of collection, EPerson at the receiving end
+3. Change the config of SelfDeposit tool (easydeposit.php) to match the DSpace repository setup
 
-  - Please read codeigniter-license.txt for terms of use.
-
-Also included with this distribution are copies of mootools, silkicons, and
-TinyMCE:
-
-  - Please read mootools-licence.txt for terms of use.
-  - Please read silkicons-licence.txt for terms of use.
-  - Please read tinymce-licence.txt for terms of use.
-
-
-SWORD Compatibility
--------------------
-This version of the library is compatible with SWORD version 1.3
-
-
+##Contact information:
+hui.zhang@oregonstate.edu
